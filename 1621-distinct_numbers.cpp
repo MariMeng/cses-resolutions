@@ -20,28 +20,22 @@ using namespace std;
 //     return 0;
 // }
 
-int main()
-{
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
     set<int> s;
-    int x, a;
-    cin >> x;
-    for (int i = 0; i < x; i++)
-    {
-        cin >> a;
-        s.insert(a);
+    cin >> n;
+    int num;
+
+    for(int i=0;i<n;i++){
+        cin >> num;
+        s.insert(num);
     }
-    cout << s.size();
+
+    cout << s.size() << endl;
+
     return 0;
 }
-
-
-   for (int i = 0; i < n; i++)
-    {
-        cin >> elem;
-        v.push_back(elem);
-    }
-    for (int i = 0; i < m; i++)
-    {
-        cin >> elem;
-        s.push_back(elem);
-    }
