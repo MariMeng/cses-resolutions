@@ -3,9 +3,9 @@
 using namespace std;
 
 int main(){
-    int n,m;
+    long int n,m;
     vector<int> vt,vc;
-    int num;
+    long int num;
 
     cin >> n >> m;
 
@@ -19,38 +19,42 @@ int main(){
         vc.push_back(num);
     }
 
-    for(int i = 0;i<m;i++){
-        int menor = 0;
-        int indxMenor = 0;
-        bool b = false;
-        
-        for(int z = 0;z< n;z++){
+    long int z = 0;
+    int pos = 0;
+    bool egual = false;
 
-            if(vc[i] == vt[z]){
-                cout << vt[z] << endl;
-                b = true;
-                vt.erase(vt.begin()+z);
-             //   cout << endl << "funcao" << endl;
-            //    for(int x:vt){
-            //        cout << x << " ";
-             //   }
+    while(!vt.empty() && z<m){
+
+        int p = 0;
+        egual = false;
+
+        for(int i = 0;i<vt.size();i++){
+            if(vt[i] == vc[z]){
+                egual = true;
+                vt.erase(vt.begin() + i);
                 break;
-
-            }
-            else if((vt[z] < vc[i]) && (vt[z]> menor)){
-                menor = vt[z];
-                indxMenor = z;
-               // cout << "menor: " << menor << "| index: " << indxMenor << endl;
+            }else if((vt[i]>p) && (vt[i] < vc[z])){
+                p = vt[i];
+                pos = i;                
             }
         }
-        if((menor!=0) && (b == false)){
-            cout << menor  << endl;
-            vt.erase(vt.begin()+indxMenor);
-        }else if(menor == 0 && b == false) cout << -1 << endl;
 
-        
+        if(egual == true){
+            cout << vc[z] << endl;
+        }else if(p != 0){
+            cout << vt[pos] << endl;
+            vt.erase(vt.begin()+pos);
+        }else{
+            cout << -1 << endl;
+        }
+        z++;
+        // for(int elem:vt){
+        //     cout << elem << " ";
+        // }
+        // cout << endl;
     }
-
-    return 0;
     
+    if(n<m) cout << -1;
+    
+    return 0;
 }
